@@ -32,7 +32,7 @@ def update_cache_data(request):
 
 def get_folder_id_by_user(user: User) -> str:
     """
-    A function to get the folder id by user. Takes a User object as input and returns a string.
+    A function  to get the folder id by user. Takes a User object as input and returns a string.
     """
     with transaction.atomic():
         write_to_db, created = UserFolderGoogleDrive.objects.get_or_create(user=user)

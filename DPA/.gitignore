@@ -1,4 +1,6 @@
-*__pycache__/*
-*.pyc
 .idea
 .env
+*.pyc
+__pycache__
+
+# Привіт Всім))

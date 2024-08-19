@@ -16,6 +16,8 @@ redis = {extras = ["hiredis"], version = "^5.0.4"}
 django-redis = "^5.4.0"
 python-dotenv = "^1.0.1"
 feedparser = "^6.0.11"
+ultralytics = "^8.2.79"
+torch ="2.4.0"
 
 
 [build-system]

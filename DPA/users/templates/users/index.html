@@ -8,101 +8,42 @@
     {% load static %}
     <title>Park Easy</title>
     <style>
-        body {
-            background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
-            color: #343a40;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            overflow: hidden;
+         * {
+            box-sizing: border-box;
+        }
+        html, body {
+            width: 100%;
+            height: 100%;
             margin: 0;
             padding: 0;
-            height: 100vh;
-            position: relative;
+            overflow: hidden;
         }
-
-        .navbar {
-            background-color: #0288d1;
-            padding: 1rem;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 2;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        body {
+            background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%),
+                        -webkit-linear-gradient(top, rgba(57,173,219,.25) 0%, rgba(42,60,87,.4) 100%),
+                        -webkit-linear-gradient(135deg, #670d10 0%, #092756 100%);
+            background: -moz-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%),
+                        -moz-linear-gradient(top, rgba(57,173,219,.25) 0%, rgba(42,60,87,.4) 100%),
+                        -moz-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+            background: -o-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%),
+                        -o-linear-gradient(top, rgba(57,173,219,.25) 0%, rgba(42,60,87,.4) 100%),
+                        -o-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+            background: -ms-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%),
+                        -ms-linear-gradient(top, rgba(57,173,219,.25) 0%, rgba(42,60,87,.4) 100%),
+                        -ms-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+            background: linear-gradient(to bottom, rgba(57,173,219,.25) 0%, rgba(42,60,87,.4) 100%),
+                        linear-gradient(135deg, #670d10 0%, #092756 100%);
+            color: #343a40;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        .navbar-brand {
-            font-size: 28px;
-            font-weight: bold;
-            color: #fff;
-        }
-        .navbar-nav .nav-link {
-            color: #fff;
-            font-size: 18px;
-        }
-        .navbar-nav .nav-link:hover {
-            color: #b3e5fc;
-        }
-
-        .background-animation {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://cdn.pixabay.com/photo/2017/08/30/00/58/balloons-2695560_960_720.jpg') no-repeat center center;
-            background-size: cover;
-            filter: blur(8px);
-            z-index: 1;
-            animation: backgroundAnimation 15s linear infinite;
-        }
-        @keyframes backgroundAnimation {
-            0% { background-position: 0 0; }
-            100% { background-position: 100% 100%; }
-        }
-
-        .confetti {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 2;
-            background: url('https://cdn.pixabay.com/photo/2018/03/10/18/20/celebration-3214820_960_720.png') no-repeat center center;
-            background-size: cover;
-            opacity: 0.4;
-            animation: confetti-animation 10s linear infinite;
-        }
-        @keyframes confetti-animation {
-            0% { transform: translateY(-100%); }
-            100% { transform: translateY(100%); }
-        }
-
-        .grid-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 3;
-            background: rgba(255, 255, 255, 0.1);
-            background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: gridAnimation 5s linear infinite;
-        }
-        @keyframes gridAnimation {
-            0% { background-position: 0 0; }
-            100% { background-position: 50px 50px; }
-        }
-
         .auth-container {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: calc(100vh - 70px);
-            padding-top: 80px;
+            height: 100vh;
+            padding: 0 15px;
             position: relative;
-            z-index: 4;
+            z-index: 1;
         }
         .auth-box {
             background-color: #ffffff;
@@ -140,18 +81,6 @@
             background-color: #01579b;
             transform: scale(1.05);
         }
-        .auth-box .btn-secondary {
-            background-color: #4caf50;
-            border: none;
-        }
-        .auth-box .btn-secondary:hover {
-            background-color: #388e3c;
-            transform: scale(1.05);
-        }
-        .auth-box .btn:focus {
-            box-shadow: none;
-        }
-
         .btn-custom {
             background-color: #4caf50;
             color: #fff;
@@ -170,7 +99,6 @@
         .text-custom:hover {
             color: #388e3c;
         }
-
         .number-plate {
             position: absolute;
             width: 140px;
@@ -219,25 +147,9 @@
     </style>    
 </head>
 <body>
-    <!-- Background Animation -->
-    <div class="background-animation"></div>
-
-    <!-- Confetti Background -->
-    <div class="confetti"></div>
-
-    <!-- Grid Overlay -->
-    <div class="grid-overlay"></div>
-
     <!-- Number Plate Background -->
     <div id="number-plates-container">
     </div>
-
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
-            <a class="navbar-brand" href="/">Park Easy</a>
-        </div>
-    </nav>
 
     <!-- Authentication Container -->
     <div class="auth-container">

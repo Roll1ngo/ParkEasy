@@ -3295,3 +3295,329 @@ LINE 1: ...hone_number", "parkings_userprofile"."email" FROM "parkings_...
                                                              ^
 
 Not Found: /favicon.ico
+Internal Server Error: /admin_panel/
+Traceback (most recent call last):
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\template\loader_tags.py", line 134, in render
+    compiled_parent = self.get_parent(context)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\template\loader_tags.py", line 131, in get_parent
+    return self.find_template(parent, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\template\loader_tags.py", line 109, in find_template
+    template, origin = context.template.engine.find_template(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\template\engine.py", line 163, in find_template
+    raise TemplateDoesNotExist(name, tried=tried)
+django.template.exceptions.TemplateDoesNotExist: base.html
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\GoIT\Module 3\ParkEasy\ParkEasy\admin_panel\views.py", line 17, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\GoIT\Module 3\ParkEasy\ParkEasy\admin_panel\views.py", line 26, in home
+    return render(request, 'admin_panel/home.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\template\backends\django.py", line 63, in render
+    reraise(exc, self.backend)
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\template\backends\django.py", line 84, in reraise
+    raise new from exc
+django.template.exceptions.TemplateDoesNotExist: base.html
+Internal Server Error: /admin_panel/users/edit/1/
+Traceback (most recent call last):
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\GoIT\Module 3\ParkEasy\ParkEasy\admin_panel\views.py", line 17, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\GoIT\Module 3\ParkEasy\ParkEasy\admin_panel\views.py", line 50, in edit_user
+    plates_formset = PlatesFormSet(instance=user)
+                     ^^^^^^^^^^^^^
+NameError: name 'PlatesFormSet' is not defined. Did you mean: 'PlateFormSet'?
+Internal Server Error: /admin_panel/users/edit/2/
+Traceback (most recent call last):
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\GoIT\Module 3\ParkEasy\ParkEasy\admin_panel\views.py", line 17, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\GoIT\Module 3\ParkEasy\ParkEasy\admin_panel\views.py", line 37, in edit_user
+    print(request.text)
+          ^^^^^^^^^^^^
+AttributeError: 'WSGIRequest' object has no attribute 'text'
+Internal Server Error: /admin_panel/users/edit/2/
+Traceback (most recent call last):
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\GoIT\Module 3\ParkEasy\ParkEasy\admin_panel\views.py", line 17, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\GoIT\Module 3\ParkEasy\ParkEasy\admin_panel\views.py", line 44, in edit_user
+    print(plates_formset.id)
+          ^^^^^^^^^^^^^^^^^
+AttributeError: 'PlatesFormFormSet' object has no attribute 'id'
+Internal Server Error: /admin_panel/users/edit/1/
+Traceback (most recent call last):
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "parkings_plates_pkey"
+DETAIL:  Key (id)=(1) already exists.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\GoIT\Module 3\ParkEasy\ParkEasy\admin_panel\views.py", line 17, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\GoIT\Module 3\ParkEasy\ParkEasy\admin_panel\views.py", line 68, in edit_user
+    plates_formset.save()
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\forms\models.py", line 794, in save
+    return self.save_existing_objects(commit) + self.save_new_objects(commit)
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\forms\models.py", line 957, in save_new_objects
+    self.new_objects.append(self.save_new(form, commit=commit))
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\forms\models.py", line 1155, in save_new
+    return super().save_new(form, commit=commit)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\forms\models.py", line 767, in save_new
+    return form.save(commit=commit)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\forms\models.py", line 552, in save
+    self.instance.save()
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\db\models\base.py", line 822, in save
+    self.save_base(
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\db\models\base.py", line 909, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\db\models\base.py", line 1067, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\db\models\base.py", line 1108, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\db\models\sql\compiler.py", line 1823, in execute_sql
+    cursor.execute(sql, params)
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: duplicate key value violates unique constraint "parkings_plates_pkey"
+DETAIL:  Key (id)=(1) already exists.
+
+Internal Server Error: /admin_panel/users/edit/1/
+Traceback (most recent call last):
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "parkings_plates_pkey"
+DETAIL:  Key (id)=(2) already exists.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\GoIT\Module 3\ParkEasy\ParkEasy\admin_panel\views.py", line 17, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\GoIT\Module 3\ParkEasy\ParkEasy\admin_panel\views.py", line 68, in edit_user
+    plates_formset.save()
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\forms\models.py", line 794, in save
+    return self.save_existing_objects(commit) + self.save_new_objects(commit)
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\forms\models.py", line 957, in save_new_objects
+    self.new_objects.append(self.save_new(form, commit=commit))
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\forms\models.py", line 1155, in save_new
+    return super().save_new(form, commit=commit)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\forms\models.py", line 767, in save_new
+    return form.save(commit=commit)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\forms\models.py", line 552, in save
+    self.instance.save()
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\db\models\base.py", line 822, in save
+    self.save_base(
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\db\models\base.py", line 909, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\db\models\base.py", line 1067, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\db\models\base.py", line 1108, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\db\models\sql\compiler.py", line 1823, in execute_sql
+    cursor.execute(sql, params)
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: duplicate key value violates unique constraint "parkings_plates_pkey"
+DETAIL:  Key (id)=(2) already exists.
+
+Internal Server Error: /admin_panel/users/edit/1/
+Traceback (most recent call last):
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "parkings_plates_pkey"
+DETAIL:  Key (id)=(3) already exists.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\GoIT\Module 3\ParkEasy\ParkEasy\admin_panel\views.py", line 17, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Python\GoIT\Module 3\ParkEasy\ParkEasy\admin_panel\views.py", line 78, in edit_user
+    plates_formset.save()
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\forms\models.py", line 794, in save
+    return self.save_existing_objects(commit) + self.save_new_objects(commit)
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\forms\models.py", line 957, in save_new_objects
+    self.new_objects.append(self.save_new(form, commit=commit))
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\forms\models.py", line 1155, in save_new
+    return super().save_new(form, commit=commit)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\forms\models.py", line 767, in save_new
+    return form.save(commit=commit)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\forms\models.py", line 552, in save
+    self.instance.save()
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\db\models\base.py", line 822, in save
+    self.save_base(
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\db\models\base.py", line 909, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\db\models\base.py", line 1067, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\db\models\base.py", line 1108, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\db\models\sql\compiler.py", line 1823, in execute_sql
+    cursor.execute(sql, params)
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "E:\Users\mal4ishka\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-eFmvKdua-py3.12\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: duplicate key value violates unique constraint "parkings_plates_pkey"
+DETAIL:  Key (id)=(3) already exists.
+

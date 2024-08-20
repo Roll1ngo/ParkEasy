@@ -1,0 +1,121 @@
+{% extends 'admin_panel/base.html' %}
+{% block content %}
+<div class="container">
+    <div class="form-container">
+        <h2 class="text-center">Edit User</h2>
+        <form method="POST" class="form-container">
+            {% csrf_token %}
+            <div class="form-group">
+                <div class="form-row">
+                    <label for="{{ profile_form.name.id_for_label }}">Name:</label>
+                    {{ profile_form.name }}
+                </div>
+                <div class="form-row">
+                    <label for="{{ profile_form.phone.id_for_label }}">Phone number:</label>
+                    {{ profile_form.phone_number }}
+                </div>
+                <div class="form-row">
+                    <label for="{{ profile_form.email.id_for_label }}">Email:</label>
+                    {{ profile_form.email }}
+                </div>
+            </div>
+            <h3 class="text-center mt-4">Plates</h3>
+            {{ plates_formset.management_form }}
+            <div id="plates-container">
+                {% for form in plates_formset %}
+                    <div class="form-row-inline">
+                        {{ form.id }}
+                        <div class="plate-field mb-3">{{ form.plate_number }}</div>
+                        <label for="{{ form.is_banned.id_for_label }}" class="banned">Banned:</label>
+                        <div class="checkbox-field">{{ form.is_banned }}</div>
+                        <button type="button" class="btn btn-danger btn-sm delete-btn delete-btn-css" data-form-id="{{ forloop.counter0 }}">-</button>
+                        <input type="hidden" name="{{ form.prefix }}-DELETE" id="id_{{ form.prefix }}-DELETE" value="False">
+                    </div>
+                {% endfor %}
+            </div>
+            <button type="button" class="btn btn-secondary" id="add-row">Add Plate</button>
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <a href="{% url 'admin_panel:users' %}" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const formsetContainer = document.querySelector('.form-container');
+
+    formsetContainer.addEventListener('click', function(event) {
+        if (event.target && event.target.matches('.delete-btn')) {
+            const formId = event.target.getAttribute('data-form-id');
+            const formRow = document.querySelector(`.form-row-inline:nth-child(${parseInt(formId) + 1})`);
+
+            if (formRow) {
+                // Змінюємо значення прихованого поля на True
+                const deleteInput = formRow.querySelector('input[name$="-DELETE"]');
+                if (deleteInput) {
+                    deleteInput.value = 'True';
+                }
+                formRow.style.display = 'none'; // Приховати рядок для візуалізації
+                updateFormsetManagementForm();
+            }
+        }
+    });
+
+    function updateFormsetManagementForm() {
+        const forms = document.querySelectorAll('.form-row-inline');
+        document.querySelector('#id_plates-TOTAL_FORMS').value = forms.length;
+
+        forms.forEach((form, index) => {
+            const formPrefix = `plates-${index}`;
+            form.querySelectorAll('input, select, textarea').forEach(input => {
+                const name = input.getAttribute('name');
+                if (name) {
+                    input.setAttribute('name', name.replace(/^plates-\d+/, formPrefix));
+                }
+            });
+
+            const labels = form.querySelectorAll('label');
+            labels.forEach(label => {
+                const forAttribute = label.getAttribute('for');
+                if (forAttribute) {
+                    label.setAttribute('for', forAttribute.replace(/^id_plates-\d+/, `id_${formPrefix}`));
+                }
+            });
+        });
+    }
+});
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var form_idx = {{ plates_formset.total_form_count }};
+
+        $('#add-row').click(function() {
+            var newRow = `
+                <div class="form-row-inline" id="form-row-${form_idx}">
+                    <div class="plate-field mb-3">
+                        <input type="text" name="plates-${form_idx}-plate_number" id="id_plates-${form_idx}-plate_number" />
+                    </div>
+                    <label for="id_plates-${form_idx}-is_banned" class="banned">Banned:</label>
+                    <div class="checkbox-field">
+                        <input type="checkbox" name="plates-${form_idx}-is_banned" id="id_plates-${form_idx}-is_banned" />
+                    </div>
+                    <button type="button" class="btn btn-danger remove-row delete-btn-css" data-row-id="${form_idx}">-</button>
+                </div>`;
+
+            $('#plates-container').append(newRow);
+            form_idx++;
+            $('#id_plates-TOTAL_FORMS').val(form_idx);
+        });
+
+        $('#plates-container').on('click', '.remove-row', function() {
+            var row_id = $(this).data('row-id');
+            $('#form-row-' + row_id).remove();
+            // Update TOTAL_FORMS field
+            var current_count = $('#id_plates-TOTAL_FORMS').val();
+            $('#id_plates-TOTAL_FORMS').val(current_count - 1);
+        });
+    });
+</script>
+{% endblock %}

@@ -80,13 +80,10 @@
             requestAnimationFrame(animatePlates);
         }
 
-        // Створення табличок
         for (let i = 0; i < numberPlatesCount; i++) {
             createNumberPlate();
         }
 
-        // Розміщення табличок випадковим чином без перекриття
         placePlates();
 
-        // Запуск анімації дощу
         animatePlates();

@@ -31,29 +31,6 @@ def users(request):
     users = UserProfile.objects.prefetch_related('plates').all()
     return render(request, 'admin_panel/users.html', {'users': users})
 
-#
-# @superuser_required(login_url='/login/')
-# def edit_user(request, user_id):
-#     user = get_object_or_404(UserProfile, id=user_id)
-#
-#     if request.method == 'POST':
-#         profile_form = UserProfileForm(request.POST, instance=user)
-#         plates_formset = PlateFormSet(request.POST, instance=user)
-#
-#         if profile_form.is_valid() and plates_formset.is_valid():
-#             profile_form.save()
-#             plates_formset.save()
-#             return redirect('admin_panel:users')
-#     else:
-#         profile_form = UserProfileForm(instance=user)
-#         plates_formset = PlateFormSet(instance=user)
-#
-#     return render(request, 'admin_panel/edit_user.html', {
-#         'profile_form': profile_form,
-#         'plates_formset': plates_formset
-#     })
-#
-
 
 @superuser_required(login_url='/login/')
 def edit_user(request, user_id):

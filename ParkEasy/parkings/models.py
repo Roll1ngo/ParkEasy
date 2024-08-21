@@ -19,3 +19,7 @@ class Plates(models.Model):
 
     def __str__(self):
         return self.plate_number
+
+
+class Rates(models.Model):
+    rate = models.IntegerField()

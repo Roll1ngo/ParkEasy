@@ -1,5 +1,5 @@
 from django import forms
-from parkings.models import UserProfile, Plates
+from parkings.models import UserProfile, Plates, Rates
 from django.forms import modelformset_factory
 from django.forms import inlineformset_factory
 
@@ -26,3 +26,9 @@ PlateFormSet = inlineformset_factory(
     fields=('plate_number', 'is_banned', 'id'),
     extra=0, can_delete=True
 )
+
+
+class RateForm(forms.ModelForm):
+    class Meta:
+        model = Rates
+        fields = ['rate']

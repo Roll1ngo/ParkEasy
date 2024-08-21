@@ -3621,3 +3621,41 @@ Traceback (most recent call last):
 django.db.utils.IntegrityError: duplicate key value violates unique constraint "parkings_plates_pkey"
 DETAIL:  Key (id)=(3) already exists.
 
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Internal Server Error: /files/listfiles/
+Traceback (most recent call last):
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-f0zYAtYu-py3.12\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-f0zYAtYu-py3.12\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-f0zYAtYu-py3.12\Lib\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\Documents\GitHub\ParkEasy\ParkEasy\files\views.py", line 59, in get_filelist_from_drive
+    clean_temp_folder()
+  File "C:\Users\RollPy\Documents\GitHub\ParkEasy\ParkEasy\files\views.py", line 168, in clean_temp_folder
+    for filename in os.listdir(TEMP):
+                    ^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'media/uploads/temp'
+Not Found: /content
+Not Found: /notes
+Internal Server Error: /files/listfiles/
+Traceback (most recent call last):
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-f0zYAtYu-py3.12\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-f0zYAtYu-py3.12\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-f0zYAtYu-py3.12\Lib\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\Documents\GitHub\ParkEasy\ParkEasy\files\views.py", line 59, in get_filelist_from_drive
+    clean_temp_folder()
+  File "C:\Users\RollPy\Documents\GitHub\ParkEasy\ParkEasy\files\views.py", line 168, in clean_temp_folder
+    for filename in os.listdir(TEMP):
+                    ^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'media/uploads/temp'

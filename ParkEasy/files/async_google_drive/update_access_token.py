@@ -63,7 +63,7 @@ async def callback(request):
         full_user_creds = await aiogoogle.oauth2.build_user_creds(
             grant=request.query.get("code"), client_creds=CLIENT_CREDS
         )
-        config = dotenv_values("../../.env")
+        config = dotenv_values("../../..env")
         new_data = {
             'EMAIL': 'barsujkoanatoliy@gmail.com',
             'ACCESS_TOKEN': full_user_creds['access_token'],
@@ -73,9 +73,9 @@ async def callback(request):
 
         for key, value in new_data.items():
             if key in config:
-                set_key("../../.env", key, value)
+                set_key("../../..env", key, value)
             else:
-                set_key("../../.env", key, value, quote_mode='never')
+                set_key("../../..env", key, value, quote_mode='never')
 
         return Response(text='access_token has been updated')
     else:

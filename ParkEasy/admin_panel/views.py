@@ -1,6 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from parkings.models import UserProfile
+from .forms import UserProfileForm, PlateFormSet, RateForm
+from parkings.models import UserProfile, Rates
 
 
 def is_superuser(user):
@@ -27,5 +28,51 @@ def home(request):
 
 @superuser_required(login_url='/login/')
 def users(request):
-    users = UserProfile.objects.all()
+    users = UserProfile.objects.prefetch_related('plates').all()
     return render(request, 'admin_panel/users.html', {'users': users})
+
+
+@superuser_required(login_url='/login/')
+def edit_user(request, user_id):
+    user = get_object_or_404(UserProfile, id=user_id)
+
+    if request.method == 'POST':
+        profile_form = UserProfileForm(request.POST, instance=user)
+        plates_formset = PlateFormSet(request.POST, instance=user)
+
+        if profile_form.is_valid() and plates_formset.is_valid():
+            profile_form.save()
+            plates_formset.save()
+
+            for form in plates_formset:
+                if form.cleaned_data and not form.cleaned_data.get('DELETE', False):
+                    form.save()
+
+            return redirect('admin_panel:users')  # Перенаправляємо після збереження
+    else:
+        profile_form = UserProfileForm(instance=user)
+        plates_formset = PlateFormSet(instance=user)
+
+    return render(request, 'admin_panel/edit_user.html', {
+        'profile_form': profile_form,
+        'plates_formset': plates_formset
+    })
+
+
+@superuser_required(login_url='/login/')
+def rate(request):
+    current_rate = Rates.objects.last()
+
+    if request.method == 'POST':
+        form = RateForm(request.POST, instance=current_rate)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Rate has been successfully updated')
+            return redirect('admin_panel:rate')
+    else:
+        form = RateForm(instance=current_rate)
+
+    return render(request, 'admin_panel/rate.html', {
+        'rate': current_rate.rate,
+        'form': form
+    })

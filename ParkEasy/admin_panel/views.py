@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from .forms import UserProfileForm, PlateFormSet
-from parkings.models import UserProfile
+from .forms import UserProfileForm, PlateFormSet, RateForm
+from parkings.models import UserProfile, Rates
 
 
 def is_superuser(user):
@@ -56,4 +56,23 @@ def edit_user(request, user_id):
     return render(request, 'admin_panel/edit_user.html', {
         'profile_form': profile_form,
         'plates_formset': plates_formset
+    })
+
+
+@superuser_required(login_url='/login/')
+def rate(request):
+    current_rate = Rates.objects.last()
+
+    if request.method == 'POST':
+        form = RateForm(request.POST, instance=current_rate)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Rate has been successfully updated')
+            return redirect('admin_panel:rate')
+    else:
+        form = RateForm(instance=current_rate)
+
+    return render(request, 'admin_panel/rate.html', {
+        'rate': current_rate.rate,
+        'form': form
     })

@@ -1,0 +1,22 @@
+{% extends "admin_panel/base.html" %}
+{% block content %}
+<div class="rate-page">
+    <div class="rate-container">
+
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li class="{{ message.tags }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <h1 class="mb-4">Current Parking Rate (per hour):</h1>
+        <form method="POST" action="{% url 'admin_panel:rate' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Update Rate</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

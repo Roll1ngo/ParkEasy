@@ -1,0 +1,79 @@
+{% extends 'admin_panel/base.html' %}
+{% block content %}
+        <div class="container-fluid">
+            <div class="container mt-3">
+                <div class="list-group">
+                    <div class="row mt-3 d-flex justify-content-end my-custom-margin"><input class="form-control" id="myInput" type="text" placeholder="Search..."></div>
+                    {% for user in users %}
+                        <div class="card mt-4">
+                            <div class="d-flex justify-content-between">
+                                <div class="card-body">
+                                    <div class="mb-4">
+                                        <h5 class="mb-1"><b>{{ user.name }}</b></h5>
+                                    </div>
+                                    <p class="mb-1">Phone: {{ user.phone_number }}</p>
+                                    <p class="mb-1">Email: {{ user.email }}</p>
+                                    <p class="mb-1">Plates:
+                                        {% for plate in user.plates.all %}
+                                            {{ plate.plate_number }}{% if plate.is_banned %} (Banned){% endif %}{% if not forloop.last %}, {% endif %}
+                                        {% endfor %}
+                                    </p>
+                                </div>
+                                <div class="dropdown mt-2">
+                                    <button class="btn btn-default dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Options</button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="{% url 'admin_panel:edit_user' user.id %}">Edit</a></li>
+                                        <li><a class="dropdown-item" href="#" onclick="openDeleteModal()">Delete</a></li>
+                                    </ul>
+                                </div>
+                                <div class="modal fade" id="myModal" role="dialog">
+                                    <div class="modal-dialog modal-sm">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <p>Contact will be deleted. Are you sure?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <form id="deleteForm" method="post" action="{% url 'admin_panel:users' %}">
+                                                    {% csrf_token %}
+                                                    <button id="confirmDelete" type="submit" class="btn btn-danger">Yes</button>
+                                                    <button type="button" class="btn btn-default" onclick="closeModal()">Cancel</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            var dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle'))
+            var dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
+                return new bootstrap.Dropdown(dropdownToggleEl)
+            });
+        </script>
+        <script>
+            $(document).ready(function(){
+                $("#myInput").on("keyup", function() {
+                    var value = $(this).val().toLowerCase();
+                    $(".card-body").filter(function() {
+                        $(this).parent().parent().toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
+        </script>
+        <script>
+            function openDeleteModal() {
+                $('#myModal').modal('show');
+            }
+        </script>
+        <script>
+            function closeModal() {
+                $('#myModal').modal('hide');
+                }
+        </script>
+{% endblock %}

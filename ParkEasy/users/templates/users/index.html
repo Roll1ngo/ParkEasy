@@ -6,86 +6,171 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     {% load static %}
-    <link rel="stylesheet" href="{% static 'users/style.css' %}">
-    <title>Personal Assistant</title>
+    <title>Park Easy</title>
     <style>
-        .news-header {
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
+         * {
+            box-sizing: border-box;
         }
-    </style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        body {
+            background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%),
+                        -webkit-linear-gradient(top, rgba(57,173,219,.25) 0%, rgba(42,60,87,.4) 100%),
+                        -webkit-linear-gradient(135deg, #670d10 0%, #092756 100%);
+            background: -moz-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%),
+                        -moz-linear-gradient(top, rgba(57,173,219,.25) 0%, rgba(42,60,87,.4) 100%),
+                        -moz-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+            background: -o-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%),
+                        -o-linear-gradient(top, rgba(57,173,219,.25) 0%, rgba(42,60,87,.4) 100%),
+                        -o-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+            background: -ms-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%),
+                        -ms-linear-gradient(top, rgba(57,173,219,.25) 0%, rgba(42,60,87,.4) 100%),
+                        -ms-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+            background: linear-gradient(to bottom, rgba(57,173,219,.25) 0%, rgba(42,60,87,.4) 100%),
+                        linear-gradient(135deg, #670d10 0%, #092756 100%);
+            color: #343a40;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .auth-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 0 15px;
+            position: relative;
+            z-index: 1;
+        }
+        .auth-box {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            position: relative;
+            animation: slide-up 1s ease-out;
+        }
+        @keyframes slide-up {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        .auth-box h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: 600;
+        }
+        .auth-box p {
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        .auth-box .btn {
+            margin-top: 10px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .auth-box .btn-primary {
+            background-color: #0288d1;
+            border: none;
+        }
+        .auth-box .btn-primary:hover {
+            background-color: #01579b;
+            transform: scale(1.05);
+        }
+        .btn-custom {
+            background-color: #4caf50;
+            color: #fff;
+            border-radius: 50px;
+            padding: 15px 30px;
+            font-size: 18px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .btn-custom:hover {
+            background-color: #388e3c;
+            transform: scale(1.05);
+        }
+        .text-custom {
+            color: #4caf50;
+        }
+        .text-custom:hover {
+            color: #388e3c;
+        }
+        .number-plate {
+            position: absolute;
+            width: 140px;
+            height: 30px;
+            border: 2px solid black;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Arial', sans-serif;
+            font-size: 12px;
+            color: black;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+            padding-left: 22px;
+        }
+
+        .number-plate::before {
+            content: '';
+            display: block;
+            width: 16px;
+            height: 100%;
+            background-color: #0056a0;
+            position: absolute;
+            left: 2px;
+            top: 0;
+            border-right: 1px solid black;
+        }
+
+        .number-plate .flag {
+            position: absolute;
+            left: 4px;
+            top: 2px;
+            width: 14px;
+            height: 7px;
+            background: linear-gradient(to bottom, #0056a0 50%, #ffd700 50%);
+        }
+
+        .number-plate .ua-text {
+            position: absolute;
+            left: 4px;
+            bottom: 2px;
+            font-size: 8px;
+            color: white;
+        }
+    </style>    
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row bg-primary py-3 mb-3">
-            <div class="col-md-8">
-                <h1 class="text-white">
-                    <a href="/" class="text-decoration-none text-white">Personal Assistant</a>
-                </h1>
-            </div>
-            <div class="col-md-4 d-flex align-items-center justify-content-end">
-                {% if user.is_authenticated %}
-                <form action="logout/" method="post">
-                        {% csrf_token %}
-                        <a href="accounts/profile/" class="btn btn-light me-2">{{ user.username }}</a>
-                        <button type="submit" class="btn btn-light me-2">Log Out</button>
-                    </form>
-                {% else %}
-                    <a href="/register" class="btn btn-light me-2">Sign Up</a>
-                    <a href="/login" class="btn btn-light me-2">Login</a>
-                {% endif %}
-            </div>
-            <div class="col-md-4 search-form">
-                <form method="GET" action="" class="d-flex">
-                    <input type="text" name="search_query" placeholder="Search">
-                    <button type="submit" class="btn btn-light">Search</button>
-                </form>
-            </div>
-        </div>
+    <!-- Number Plate Background -->
+    <div id="number-plates-container">
+    </div>
 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="news-section" id="news-section">
-                    <h2 class="news-header">Fresh News</h2>
-                    <!-- Search form -->
-                    <ul class="news-list" style="display: none;">
-                        {% for news_item in news_list %}
-                        <li>
-                            <h3><a href="{{ news_item.link }}">{{ news_item.title }}</a></h3>
-                            <p>{{ news_item.content }}</p>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
+    <!-- Authentication Container -->
+    <div class="auth-container">
+        <div class="auth-box">
+            <h2 class="text-custom">Welcome to Park Easy</h2>
+            <p>Log in or register to get started!</p>
+            {% if user.is_authenticated %}
+                <a href="accounts/profile/" class="btn btn-custom">Go to Profile</a>
+                <form action="logout/" method="post" class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-custom">Log Out</button>
+                </form>
+            {% else %}
+                <a href="/register" class="btn btn-custom">Sign Up</a>
+                <a href="/login" class="btn btn-custom">Login</a>
+            {% endif %}
         </div>
     </div>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var newsHeader = document.querySelector('.news-header');
-            var newsList = document.querySelector('.news-list');
 
-            newsHeader.addEventListener('click', function() {
-                if (newsList.style.display === 'none') {
-                    newsList.style.display = 'block';
-                } else {
-                    newsList.style.display = 'none';
-                }
-            });
-
-            var personalAssistant = document.querySelector('.text-decoration-none');
-            personalAssistant.addEventListener('click', function() {
-                if (newsList.style.display === 'block') {
-                    newsList.style.display = 'none';
-                }
-            });
-        });
-    </script>
-
+    <!-- External JavaScript -->
+    <script src="{% static 'js/app.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-B6sLOLr/6+oqM5fCMtG5qH0cSAO6qDl3jI4gW2G14NC7Glg7mGFPp4XuhFffTJf3" crossorigin="anonymous"></script>
 </body>
 </html>

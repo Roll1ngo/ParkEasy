@@ -109,19 +109,60 @@
         .recover-password-link:hover {
             text-decoration: underline;
         }
+        .error {
+            color: #ff6b6b;
+            background-color: rgba(255, 107, 107, 0.2);
+            padding: 5px;
+            border-radius: 4px;
+            margin-top: -8px;
+            margin-bottom: 10px;
+            font-size: 12px;
+        }
     </style>
 </head>
 <body>
     <div class="login">
         <h1>Register</h1>
         <form method="post" enctype="multipart/form-data">
-            <input type="text" name="username" placeholder="Username" required="required">
-            <input type="email" name="email" placeholder="Email" required="required">
-            <input type="password" name="password1" placeholder="Password" required="required">
-            <input type="password" name="password2" placeholder="Confirm Password" required="required">
-            <input type="text" name="license_plate" placeholder="License Plate">
-            <input type="file" name="license_plate_image" placeholder="License Plate Image">
-            <button type="submit" class="btn btn-primary btn-block btn-large">Register</button>
+            {% csrf_token %}
+            <div class="form-group">
+                <input type="text" name="username" placeholder="Username" value="{{ form.username.value|default_if_none:'' }}">
+
+                {% if form.username.errors %}
+                    <div class="error">{{ form.username.errors }}</div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" placeholder="Email" value="{{ form.email.value|default_if_none:'' }}">
+                {% if form.email.errors %}
+                    <div class="error">{{ form.email.errors }}</div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <input type="password" name="password1" placeholder="Password">
+                {% if form.password1.errors %}
+                    <div class="error">{{ form.password1.errors }}</div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <input type="password" name="password2" placeholder="Confirm Password">
+                {% if form.password2.errors %}
+                    <div class="error">{{ form.password2.errors }}</div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <input type="text" name="license_plate" placeholder="License Plate" value="{{ form.license_plate.value|default_if_none:'' }}">
+                {% if form.license_plate.errors %}
+                    <div class="error">{{ form.license_plate.errors }}</div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <input type="file" name="license_plate_image">
+                {% if form.license_plate_image.errors %}
+                    <div class="error">{{ form.license_plate_image.errors }}</div>
+                {% endif %}
+            </div>
+            <button type="submit" class="btn">Register</button>
             <button type="reset" class="btn btn-secondary">Reset</button>
         </form>
     </div>

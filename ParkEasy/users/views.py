@@ -9,6 +9,7 @@ from django.contrib.auth.views import LoginView
 from django.contrib.auth import logout
 from .forms import RegisterForm
 from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
+from django.urls import reverse_lazy
 
 
 def profile(request):
@@ -28,7 +29,7 @@ class RegisterView(View):
         return render(request, self.template_name, context={'form': self.form_class})
 
     def post(self, request):
-        form = self.form_class(request.POST)
+        form = self.form_class(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             username = form.cleaned_data['username']
@@ -57,13 +58,14 @@ class LoginForm(AuthenticationForm):
             elif not self.user_cache.is_active:
                 raise forms.ValidationError(self.error_messages['inactive'], code='inactive')
 
-        return self.cleaned_data
+        return self.cleaned_data, redirect('/accounts/profile/')
+        
 
 
 class CustomLoginView(LoginView):
     template_name = 'users/login.html'
     form_class = LoginForm
-    success_url = 'profile/'
+    success_url = reverse_lazy('/accounts/profile/')
 
 
 def change_password(request):

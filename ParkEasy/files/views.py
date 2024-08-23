@@ -19,6 +19,7 @@ TEMP = f'media/uploads/temp'
 
 
 def get_cache_data(request):
+    print(request)
     print('Data from cache')
     return cache.get(request.user.id)
 

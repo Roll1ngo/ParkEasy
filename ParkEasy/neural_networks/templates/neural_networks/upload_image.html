@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Завантажити зображення</title>
+</head>
+<body>
+<h1>Завантажити зображення для обробки</h1>
+
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Завантажити</button>
+</form>
+{% if text %}
+<h2>Number Plate</h2>
+<p>{{ text }}</p>
+{% endif %}
+</body>
+</html>

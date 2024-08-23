@@ -42,12 +42,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'neural_networks.apps.NeuralNetworksConfig',
     'files.apps.FilesConfig',
     'django_redis',
     'users',
     'admin_panel',
     'parkings',
-    'nns'
+
+
 ]
 
 MIDDLEWARE = [

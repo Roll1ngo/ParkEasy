@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'users',
     'admin_panel',
     'parkings',
+    'nns'
 ]
 
 MIDDLEWARE = [

@@ -9,7 +9,7 @@ CLIENT = InferenceHTTPClient(
     api_url="https://detect.roboflow.com",
     api_key="9cBmz9pmN1YhVsvyH05Z"
 )
-SAVE_DIR = './test_images/plate_number_images'
+SAVE_DIR = 'ParkEasy/nns/test_images/plate_number_images'
 
 
 def get_plate_number_image(image_path: str):
@@ -19,12 +19,12 @@ def get_plate_number_image(image_path: str):
     predictions = model_predict['predictions']
 
     for predict in predictions:
+        number_plate_uuid = uuid.uuid4()
+        if predict['class'] == 'license-plate' and predict['confidence'] > 0.5:
 
-        if predict['class'] == 'license-plate':
-            number_plate_uuid = uuid.uuid4()
             x, y, width, height = predict['x'], predict['y'], predict['width'], predict['height']
-            confidence = predict['confidence']
-            print(x, y, width, height)
+            confidence = round(predict['confidence'], 2)
+            print(x, y, width, height, "______", confidence)
 
             # Обчислення координат верхнього лівого і нижнього правого кутів
             x1, y1, x2, y2 = int(x - width / 2), int(y - height / 2), int(x + width / 2), int(y + height / 2)
@@ -42,11 +42,12 @@ def get_plate_number_image(image_path: str):
             cv2.putText(image, text, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
 
             # Збереження вирізаного зображення
-            save_path = os.path.join(SAVE_DIR, f"{predict['class']}_{number_plate_uuid}.jpg")
+            save_path = os.path.join(SAVE_DIR, f"{predict['class']}_{number_plate_uuid}_{confidence}.jpg")
             cv2.imwrite(save_path, cropped_image)
     return save_path
 
 
-# for i in range(1, 5):
-#     source_image_path = f'./test_images/{i}.jpg'
-#     path_number_plate_image = get_plate_number_image(source_image_path)
+if __name__ == '__main__':
+
+    source_image_path = f'ParkEasy/nns/test_images/4.jpg'
+    path_number_plate_image = get_plate_number_image(source_image_path)

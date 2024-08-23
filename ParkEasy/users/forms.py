@@ -11,17 +11,16 @@ class RegisterForm(UserCreationForm):
    
     class Meta:
         model = User
-        fields = ['username', 'email']
+        fields = ['username', 'email', 'password1', 'password2', 'license_plate', 'license_plate_image']
 
     def save(self, commit=True):
         user = super().save(commit=False)
-        user.set_password(self.cleaned_data['password'])
         if commit:
             user.save()
             UserCreate.objects.create(
                 user=user,
                 license_plate=self.cleaned_data['license_plate'],
-                license_plate_image=self.cleaned_data['license_plate_image']
+                license_plate_image=self.cleaned_data.get('license_plate_image')
             )
         return user
 

@@ -19,3 +19,20 @@ class Plates(models.Model):
 
     def __str__(self):
         return self.plate_number
+
+
+class Rates(models.Model):
+    rate = models.IntegerField()
+
+
+class History(models.Model):
+    plate = models.ForeignKey(Plates, on_delete=models.CASCADE, related_name='parkings_history')
+    parking_start = models.DateTimeField(auto_now_add=True)
+    parking_end = models.DateTimeField(null=True, blank=True)
+    is_completed = models.BooleanField(default=False)
+    duration = models.IntegerField(null=True, blank=True)
+
+    def __str__(self):
+        plate_number = self.plate.plate_number if self.plate else 'Unknown'
+        return f"Parking {self.id} for plate {plate_number}, Started at {self.parking_start}, Ended at {self.parking_end if self.parking_end else 'Ongoing'}, Completed: {'Yes' if self.is_completed else 'No'}, Duration: {self.duration} minutes"
+

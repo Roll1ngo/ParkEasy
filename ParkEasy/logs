@@ -1,0 +1,463 @@
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Not Found: /files
+Not Found: /favicon.ico
+Not Found: /files
+Internal Server Error: /files/listfiles/
+Traceback (most recent call last):
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\Documents\ParkEasy\ParkEasy\files\views.py", line 62, in get_filelist_from_drive
+    data = update_cache_data(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\Documents\ParkEasy\ParkEasy\files\views.py", line 27, in update_cache_data
+    data = async_to_sync(get_file_list_from_drive)(get_folder_id_by_user(request.user))
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\Documents\ParkEasy\ParkEasy\files\views.py", line 38, in get_folder_id_by_user
+    write_to_db, created = UserFolderGoogleDrive.objects.get_or_create(user=user)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\query.py", line 948, in get_or_create
+    return self.get(**kwargs), False
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\query.py", line 635, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\query.py", line 1476, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\query.py", line 1494, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\query.py", line 1501, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\sql\query.py", line 1609, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\sql\query.py", line 1641, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\sql\query.py", line 1491, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg, summarize)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\sql\query.py", line 1303, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\sql\query.py", line 1768, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'user' into field. Choices are: folder_drive_id, id
+Internal Server Error: /files/listfiles/
+Traceback (most recent call last):
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\Documents\ParkEasy\ParkEasy\files\views.py", line 62, in get_filelist_from_drive
+    data = update_cache_data(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\Documents\ParkEasy\ParkEasy\files\views.py", line 27, in update_cache_data
+    data = async_to_sync(get_file_list_from_drive)(get_folder_id_by_user(request.user))
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\Documents\ParkEasy\ParkEasy\files\views.py", line 38, in get_folder_id_by_user
+    write_to_db, created = UserFolderGoogleDrive.objects.get_or_create(user=user)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\query.py", line 948, in get_or_create
+    return self.get(**kwargs), False
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\query.py", line 635, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\query.py", line 1476, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\query.py", line 1494, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\query.py", line 1501, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\sql\query.py", line 1609, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\sql\query.py", line 1641, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\sql\query.py", line 1491, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg, summarize)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\sql\query.py", line 1303, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\sql\query.py", line 1768, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'user' into field. Choices are: folder_drive_id, id, user_ids, user_ids_id
+Internal Server Error: /files/listfiles/
+Traceback (most recent call last):
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\Documents\ParkEasy\ParkEasy\files\views.py", line 63, in get_filelist_from_drive
+    data = update_cache_data(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\Documents\ParkEasy\ParkEasy\files\views.py", line 28, in update_cache_data
+    data = async_to_sync(get_file_list_from_drive)(get_folder_id_by_user(request.user))
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\Documents\ParkEasy\ParkEasy\files\views.py", line 39, in get_folder_id_by_user
+    write_to_db, created = UserFolderGoogleDrive.objects.get_or_create(user=user)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\query.py", line 948, in get_or_create
+    return self.get(**kwargs), False
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\query.py", line 635, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\query.py", line 1476, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\query.py", line 1494, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\query.py", line 1501, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\sql\query.py", line 1609, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\sql\query.py", line 1641, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\sql\query.py", line 1491, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg, summarize)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\sql\query.py", line 1303, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\sql\query.py", line 1768, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'user' into field. Choices are: folder_drive_id, id, user_ids, user_ids_id
+Internal Server Error: /neunet/upload_image/
+Traceback (most recent call last):
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\Documents\ParkEasy\ParkEasy\neural_networks\views.py", line 17, in upload_car_image
+    return render(request, 'neural_networks/upload_image.html', {'form': form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: neural_networks/upload_image.html
+Internal Server Error: /neunet/upload_image/
+Traceback (most recent call last):
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\Documents\ParkEasy\ParkEasy\neural_networks\views.py", line 17, in upload_car_image
+    return render(request, 'neural_networks/upload_image.html', {'form': form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: neural_networks/upload_image.html
+Internal Server Error: /neunet/upload_image/
+Traceback (most recent call last):
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\Documents\ParkEasy\ParkEasy\neural_networks\views.py", line 17, in upload_car_image
+    return render(request, 'neural_networks/upload_image.html', {'form': form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: neural_networks/upload_image.html
+Internal Server Error: /neunet/upload_image/
+Traceback (most recent call last):
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedTable: relation "neural_networks_imageupload" does not exist
+LINE 1: INSERT INTO "neural_networks_imageupload" ("image") VALUES (...
+                    ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\Documents\ParkEasy\ParkEasy\neural_networks\views.py", line 10, in upload_car_image
+    uploaded_image = form.save()  # «бер≥гаЇмо зображенн€
+                     ^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\forms\models.py", line 554, in save
+    self.instance.save()
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\base.py", line 891, in save
+    self.save_base(
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\base.py", line 997, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\base.py", line 1160, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\base.py", line 1201, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\sql\compiler.py", line 1836, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: relation "neural_networks_imageupload" does not exist
+LINE 1: INSERT INTO "neural_networks_imageupload" ("image") VALUES (...
+                    ^
+
+Internal Server Error: /neunet/upload_image/
+Traceback (most recent call last):
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedTable: relation "neural_networks_imageupload" does not exist
+LINE 1: INSERT INTO "neural_networks_imageupload" ("image") VALUES (...
+                    ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\Documents\ParkEasy\ParkEasy\neural_networks\views.py", line 10, in upload_car_image
+    uploaded_image = form.save()  # «бер≥гаЇмо зображенн€
+                     ^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\forms\models.py", line 554, in save
+    self.instance.save()
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\base.py", line 891, in save
+    self.save_base(
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\base.py", line 997, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\base.py", line 1160, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\base.py", line 1201, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\sql\compiler.py", line 1836, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: relation "neural_networks_imageupload" does not exist
+LINE 1: INSERT INTO "neural_networks_imageupload" ("image") VALUES (...
+                    ^
+
+Internal Server Error: /neunet/upload_image/
+Traceback (most recent call last):
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedTable: relation "neural_networks_imageupload" does not exist
+LINE 1: INSERT INTO "neural_networks_imageupload" ("image") VALUES (...
+                    ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\Documents\ParkEasy\ParkEasy\neural_networks\views.py", line 10, in upload_car_image
+    uploaded_image = form.save()  # «бер≥гаЇмо зображенн€
+                     ^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\forms\models.py", line 554, in save
+    self.instance.save()
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\base.py", line 891, in save
+    self.save_base(
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\base.py", line 997, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\base.py", line 1160, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\base.py", line 1201, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\models\sql\compiler.py", line 1836, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: relation "neural_networks_imageupload" does not exist
+LINE 1: INSERT INTO "neural_networks_imageupload" ("image") VALUES (...
+                    ^
+
+Internal Server Error: /neunet/upload_image/
+Traceback (most recent call last):
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\Documents\ParkEasy\ParkEasy\neural_networks\views.py", line 12, in upload_car_image
+    path_to_number_plate = get_number_in_text(image_path)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\Documents\ParkEasy\ParkEasy\neural_networks\implement_model_ocr.py", line 141, in get_number_in_text
+    return extract_license_plate_text("neural_networks/test_images/ocr/output_img.jpg")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\Documents\ParkEasy\ParkEasy\neural_networks\implement_model_ocr.py", line 32, in extract_license_plate_text
+    for word_info in line:
+TypeError: 'NoneType' object is not iterable
+Internal Server Error: /neunet/upload_image/
+Traceback (most recent call last):
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\Documents\ParkEasy\ParkEasy\neural_networks\views.py", line 12, in upload_car_image
+    path_to_number_plate = get_number_in_text(image_path)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\Documents\ParkEasy\ParkEasy\neural_networks\implement_model_ocr.py", line 142, in get_number_in_text
+    return extract_license_plate_text("neural_networks/test_images/ocr/output_img.jpg")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\Documents\ParkEasy\ParkEasy\neural_networks\implement_model_ocr.py", line 32, in extract_license_plate_text
+    for word_info in line:
+TypeError: 'NoneType' object is not iterable
+Not Found: /favicon.ico
+Internal Server Error: /neunet/upload_image/
+Traceback (most recent call last):
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\AppData\Local\pypoetry\Cache\virtualenvs\parkeasy-NmE8ZzPf-py3.11\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\Documents\ParkEasy\ParkEasy\neural_networks\views.py", line 12, in upload_car_image
+    path_to_number_plate = get_number_in_text(image_path)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\Documents\ParkEasy\ParkEasy\neural_networks\implement_model_ocr.py", line 140, in get_number_in_text
+    return extract_license_plate_text("neural_networks/test_images/ocr/output_img.jpg")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\Documents\ParkEasy\ParkEasy\neural_networks\implement_model_ocr.py", line 40, in extract_license_plate_text
+    return validate_ukraine_plate(text)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\RollPy\Documents\ParkEasy\ParkEasy\neural_networks\implement_model_ocr.py", line 22, in validate_ukraine_plate
+    return text.upper()
+           ^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'upper'

@@ -2,7 +2,6 @@
 .env
 *.pyc
 __pycache__
-logs
 
 # Привіт Всім))
-# Привіт
+.logs

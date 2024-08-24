@@ -9,7 +9,7 @@ from django.contrib.auth.views import LoginView
 from django.contrib.auth import logout
 from .forms import RegisterForm
 from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
-from .bbc_news_scraper import get_bbc_ukrainian_news
+from django.urls import reverse_lazy
 
 
 def profile(request):
@@ -29,7 +29,7 @@ class RegisterView(View):
         return render(request, self.template_name, context={'form': self.form_class})
 
     def post(self, request):
-        form = self.form_class(request.POST)
+        form = self.form_class(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             username = form.cleaned_data['username']
@@ -58,13 +58,14 @@ class LoginForm(AuthenticationForm):
             elif not self.user_cache.is_active:
                 raise forms.ValidationError(self.error_messages['inactive'], code='inactive')
 
-        return self.cleaned_data
+        return self.cleaned_data, redirect('/accounts/profile/')
+        
 
 
 class CustomLoginView(LoginView):
     template_name = 'users/login.html'
     form_class = LoginForm
-    success_url = 'profile/'
+    success_url = reverse_lazy('/accounts/profile/')
 
 
 def change_password(request):
@@ -108,16 +109,5 @@ class CustomPasswordResetCompleteView(PasswordResetCompleteView):
 
 
 def index(request):
-    if request.method == 'GET':
-        search_query = request.GET.get('search_query', '')
-
-        rss_url = "https://feeds.bbci.co.uk/ukrainian/rss.xml"
-        news_list = get_bbc_ukrainian_news(rss_url)
-
-        if search_query:
-            news_list = [news_item for news_item in news_list if 'title' in news_item and search_query.lower() in news_item['title'].lower()]
-
-        return render(request, 'users/index.html', {'news_list': news_list})
-    else:
-        return render(request, 'users/index.html')
+    return render(request, 'users/index.html')
 

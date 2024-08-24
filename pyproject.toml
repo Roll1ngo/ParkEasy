@@ -20,9 +20,6 @@ pillow = "^10.4.0"
 ultralytics = "8.0.196"
 roboflow = "^1.1.40"
 inference-sdk = { version = "^0.16.2", python = ">=3.11,<3.12" }
-pandas = "^2.2.2"
-xlsxwriter = "^3.2.0"
-openpyxl = "^3.1.5"
 
 
 [build-system]

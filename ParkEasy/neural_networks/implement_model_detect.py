@@ -49,5 +49,5 @@ def get_plate_number_image(image_path: str):
 
 if __name__ == '__main__':
 
-    source_image_path = f'ParkEasy/nns/test_images/4.jpg'
+    source_image_path = 'neural_networks/test_images/car_image/1484814.jpg'
     path_number_plate_image = get_plate_number_image(source_image_path)

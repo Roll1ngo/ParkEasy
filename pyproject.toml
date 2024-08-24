@@ -20,6 +20,9 @@ pillow = "^10.4.0"
 ultralytics = "8.0.196"
 roboflow = "^1.1.40"
 inference-sdk = { version = "^0.16.2", python = ">=3.11,<3.12" }
+paddlepaddle = "^2.6.1"
+paddleocr = "^2.8.1"
+pytesseract = "^0.3.13"
 
 
 [build-system]

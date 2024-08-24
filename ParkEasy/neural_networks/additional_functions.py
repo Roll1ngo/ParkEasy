@@ -1,5 +1,5 @@
 import time
-
+import re
 from PIL import Image
 import cv2
 import numpy as np
@@ -56,3 +56,17 @@ def get_file_paths(folder_path):
                 file_paths.append(file_path)
 
     return file_paths
+
+
+def en_uk_replace(text):
+    text = re.sub(r"[^\w]", '', text)
+    replacement_map = {'L': 'І', '\n': ''}
+    new_text = ""
+    for char in text:
+        if char in replacement_map:
+            new_text += replacement_map[char]
+        else:
+            new_text += char
+    if new_text[0] == '1' or new_text[1] == '1' or new_text[-1] == '1' or new_text[-2] == '1':
+        new_text = new_text.replace('1', 'І')
+    return new_text

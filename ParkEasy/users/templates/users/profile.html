@@ -123,11 +123,17 @@
                 </h1>
             </div>
             <div class="col-md-4 d-flex align-items-center justify-content-end">
+                {% if user.is_superuser %}
+                    <a href="{% url 'admin_panel:users' %}" class="btn btn-secondary">Admin Panel</a>
+                {% endif %}
                 <form id="logout-form" action="/logout/" method="post">
                     {% csrf_token %}
                     <button type="submit" class="btn btn-light me-2">Log Out</button>
                 </form>
                 <a href="/change_password" class="btn btn-light me-2">Change password</a>
+                <a href="/change_password" class="btn btn-light me-2">Редагування особистих данних </a>
+                <a href="/change_password" class="btn btn-light me-2">Звіт</a>
+                <a href="/change_password" class="btn btn-light me-2">Почати парковку</a>
             </div>
         </div>
     </div>

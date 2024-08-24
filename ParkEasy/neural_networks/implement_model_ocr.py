@@ -4,7 +4,7 @@ from paddleocr import PaddleOCR
 import re
 
 from .implement_model_detect import get_plate_number_image
-from .additional_functions import get_file_paths, show_image
+from .additional_functions import en_uk_replace
 
 # Initialize PaddleOCR with English language model
 ocr = PaddleOCR(use_angle_cls=True, lang='en', show_log=False)
@@ -12,8 +12,14 @@ ocr = PaddleOCR(use_angle_cls=True, lang='en', show_log=False)
 
 # Validate Ukrainian plate format
 def validate_ukraine_plate(text):
-    pattern = r'^[A-Z]{2}\d{4}[A-Z]{2}$'
-    return bool(re.match(pattern, text))
+    text = en_uk_replace(text)
+    if len(text) >= 8:
+        text = text[-8:].upper()
+
+        print(f"Detected License Plate: {text}")
+        return text
+    else:
+        return text.upper()
 
 
 def extract_license_plate_text(image_path):
@@ -27,22 +33,15 @@ def extract_license_plate_text(image_path):
     # OCR
     result = ocr.ocr(image)
     print("output ocr___", result)
+    if result != [None]:
+        for line in result:
+            for word_info in line:
+                text = word_info[1][0]
+                return validate_ukraine_plate(text)
 
-    for line in result:
-        for word_info in line:
-            text = word_info[1][0]
-            text = text.strip().replace('\n', '').replace(' ', '')
-            if len(text) != 8:
-                text = text[-8:]
-                print(f"Detected License Plate: {text}")
-                return text.upper()
-            elif validate_ukraine_plate(text):
-                print(f"Detected License Plate: {text}")
-                return text.upper()
-            else:
-                print(f"Invalid License Plate format: {text}")
-
-    return f'Не вдалося структурувати вихід моделі {result}'
+    else:
+        "Не визначено знаходження номерного знаку"
+    return f'Не вдалося коректно прочитати номерний знак:  {result}'
 
 
 def segment_characters(image):
@@ -142,4 +141,4 @@ def get_number_in_text(source_image_path):
 
 
 if __name__ == '__main__':
-    get_number_in_text('neural_networks/test_images/car_image/audi.jpg')
+    get_number_in_text('neural_networks/test_images/car_image/193636285orig.jpeg')

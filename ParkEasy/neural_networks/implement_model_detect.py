@@ -15,7 +15,7 @@ SAVE_DIR = 'neural_networks/test_images/plate_number_images'
 def get_plate_number_image(image_path: str):
     resize_image_path = image_path
     image = cv2.imread(resize_image_path)
-    model_predict = CLIENT.infer(resize_image_path, model_id="license-plates-us-eu-1tufg/2")
+    model_predict = CLIENT.infer(resize_image_path, model_id="license-plates-us-eu-1tufg/1")
     predictions = model_predict['predictions']
 
     for predict in predictions:

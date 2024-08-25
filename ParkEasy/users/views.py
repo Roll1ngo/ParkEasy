@@ -10,6 +10,9 @@ from django.contrib.auth import logout
 from .forms import RegisterForm
 from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 from django.urls import reverse_lazy
+from django.contrib.auth.decorators import login_required
+from admin_panel.forms import UserProfileForm, PlateFormSet, PlatesFormUser, PlateFormSetUser
+from parkings.models import Plates
 
 
 def profile(request):
@@ -61,7 +64,6 @@ class LoginForm(AuthenticationForm):
         return self.cleaned_data, redirect('/accounts/profile/')
         
 
-
 class CustomLoginView(LoginView):
     template_name = 'users/login.html'
     form_class = LoginForm
@@ -111,3 +113,32 @@ class CustomPasswordResetCompleteView(PasswordResetCompleteView):
 def index(request):
     return render(request, 'users/index.html')
 
+
+@login_required
+def edit_user(request):
+    user = request.user.userprofile
+
+    if request.method == 'POST':
+        profile_form = UserProfileForm(request.POST, instance=user)
+        plates_formset = PlateFormSetUser(request.POST, instance=user)
+
+        if profile_form.is_valid() and plates_formset.is_valid():
+            profile_form.save()
+
+            # Зберігаємо або видаляємо форми
+            for form in plates_formset:
+                if form.cleaned_data and form.cleaned_data.get('DELETE', False):
+                    if form.instance.pk:
+                        form.instance.delete()
+                elif form.cleaned_data and not form.cleaned_data.get('DELETE', False):
+                    form.save()
+
+            return redirect('users:profile')  # Перенаправлення після успішного збереження
+    else:
+        profile_form = UserProfileForm(instance=user)
+        plates_formset = PlateFormSetUser(instance=user)
+
+    return render(request, 'users/edit_user.html', {
+        'profile_form': profile_form,
+        'plates_formset': plates_formset
+    })

@@ -12,11 +12,12 @@ from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, 
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from admin_panel.forms import UserProfileForm, PlateFormSet, PlatesFormUser, PlateFormSetUser
-from parkings.models import Plates, UserProfile
+from parkings.models import Plates, UserProfile, Rates
 
 
 def profile(request):
-    return render(request, 'users/profile.html')
+    current_rate = Rates.objects.last()
+    return render(request, 'users/profile.html', {'current_rate': current_rate.rate})
 
 
 # class RegisterView(View):

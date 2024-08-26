@@ -67,7 +67,8 @@ class RegisterView(View):
                 user=user,
                 name=form.cleaned_data['name'],
                 phone_number=form.cleaned_data['phone_number'],
-                email=form.cleaned_data['email']
+                email=form.cleaned_data['email'],
+                parking_limit=0,
             )
 
             # Створення Plates

@@ -7,21 +7,44 @@ from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.views import View
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import logout
-from .forms import RegisterForm
+from .forms import NewRegisterForm
 from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from admin_panel.forms import UserProfileForm, PlateFormSet, PlatesFormUser, PlateFormSetUser
-from parkings.models import Plates
+from parkings.models import Plates, UserProfile, Rates
 
 
 def profile(request):
-    return render(request, 'users/profile.html')
+    current_rate = Rates.objects.last()
+    return render(request, 'users/profile.html', {'current_rate': current_rate.rate})
+
+
+# class RegisterView(View):
+#     template_name = 'users/register.html'
+#     form_class = RegisterForm
+#
+#     def dispatch(self, request, *args, **kwargs):
+#         if request.user.is_authenticated:
+#             return redirect(to='/')
+#         return super().dispatch(request, *args, **kwargs)
+#
+#     def get(self, request):
+#         return render(request, self.template_name, context={'form': self.form_class})
+#
+#     def post(self, request):
+#         form = self.form_class(request.POST, request.FILES)
+#         if form.is_valid():
+#             form.save()
+#             username = form.cleaned_data['username']
+#             messages.success(request, f'Greetings {username}, your account has been successfully registered')
+#             return redirect(to='users:login')
+#         return render(request, self.template_name, context={'form': form})
 
 
 class RegisterView(View):
     template_name = 'users/register.html'
-    form_class = RegisterForm
+    form_class = NewRegisterForm
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
@@ -32,9 +55,30 @@ class RegisterView(View):
         return render(request, self.template_name, context={'form': self.form_class})
 
     def post(self, request):
+        print(request.POST)
         form = self.form_class(request.POST, request.FILES)
+        print(form.errors)
         if form.is_valid():
-            form.save()
+            # Створення користувача
+            user = form.save()
+
+            # Створення UserProfile
+            user_profile = UserProfile.objects.create(
+                user=user,
+                name=form.cleaned_data['name'],
+                phone_number=form.cleaned_data['phone_number'],
+                email=form.cleaned_data['email']
+            )
+
+            # Створення Plates
+            plate = Plates.objects.create(
+                user=user_profile,
+                plate_number=form.cleaned_data['plate_number'],
+                is_banned=False  # за замовчуванням не забанений
+            )
+
+
+
             username = form.cleaned_data['username']
             messages.success(request, f'Greetings {username}, your account has been successfully registered')
             return redirect(to='users:login')
@@ -114,7 +158,6 @@ def index(request):
     return render(request, 'users/index.html')
 
 
-@login_required
 def edit_user(request):
     user = request.user.userprofile
 

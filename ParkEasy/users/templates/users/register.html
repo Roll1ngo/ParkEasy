@@ -126,8 +126,19 @@
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group">
+                <input type="text" name="name" placeholder="Name" value="{{ form.name.value|default_if_none:'' }}">
+                {% if form.name.errors %}
+                    <div class="error">{{ form.name.errors }}</div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <input type="text" name="phone_number" placeholder="Phone Number" value="{{ form.name.value|default_if_none:'' }}">
+                {% if form.phone_number.errors %}
+                    <div class="error">{{ form.phone_number.errors }}</div>
+                {% endif %}
+            </div>
+            <div class="form-group">
                 <input type="text" name="username" placeholder="Username" value="{{ form.username.value|default_if_none:'' }}">
-
                 {% if form.username.errors %}
                     <div class="error">{{ form.username.errors }}</div>
                 {% endif %}
@@ -151,9 +162,9 @@
                 {% endif %}
             </div>
             <div class="form-group">
-                <input type="text" name="license_plate" placeholder="License Plate" value="{{ form.license_plate.value|default_if_none:'' }}">
-                {% if form.license_plate.errors %}
-                    <div class="error">{{ form.license_plate.errors }}</div>
+                <input type="text" name="plate_number" placeholder="License Plate" value="{{ form.plate_number.value|default_if_none:'' }}">
+                {% if form.plate_number.errors %}
+                    <div class="error">{{ form.plate_number.errors }}</div>
                 {% endif %}
             </div>
             <div class="form-group">

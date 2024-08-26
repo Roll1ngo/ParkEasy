@@ -7,6 +7,7 @@ class UserProfile(models.Model):
     name = models.CharField(blank=True, null=True, max_length=20)
     phone_number = models.CharField(max_length=15, blank=True, null=True)
     email = models.EmailField(blank=True, null=True)
+    parking_limit = models.IntegerField(default=0)
 
     def __str__(self):
         return f"Username: {self.user}, Phone: {self.phone_number}, Email: {self.email}"

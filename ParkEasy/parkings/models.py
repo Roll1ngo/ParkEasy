@@ -7,6 +7,7 @@ class UserProfile(models.Model):
     name = models.CharField(blank=True, null=True, max_length=20)
     phone_number = models.CharField(max_length=15, blank=True, null=True)
     email = models.EmailField(blank=True, null=True)
+    parking_limit = models.IntegerField(default=0)
 
     def __str__(self):
         return f"Username: {self.user}, Phone: {self.phone_number}, Email: {self.email}"
@@ -34,5 +35,5 @@ class History(models.Model):
 
     def __str__(self):
         plate_number = self.plate.plate_number if self.plate else 'Unknown'
-        return f"Parking {self.id} for plate {plate_number}, Started at {self.parking_start}, Ended at {self.parking_end if self.parking_end else 'Ongoing'}, Completed: {'Yes' if self.is_completed else 'No'}, Duration: {self.duration} minutes"
+        return f"Parking {self.id} for plate {plate_number}, Started at {self.parking_start}, Ended at {self.parking_end if self.parking_end else 'Ongoing'}, Completed: {'Yes' if self.is_completed else 'No'}, Duration: {self.duration} hour"
 

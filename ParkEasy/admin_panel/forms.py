@@ -7,7 +7,7 @@ from django.forms import inlineformset_factory
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ['name', 'phone_number', 'email']
+        fields = ['name', 'phone_number', 'email', 'parking_limit']
 
 
 class PlatesForm(forms.ModelForm):

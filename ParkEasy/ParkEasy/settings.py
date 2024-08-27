@@ -13,6 +13,7 @@ import os
 from pathlib import Path
 import environ
 from dotenv import load_dotenv
+from celery.schedules import crontab
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -48,8 +49,8 @@ INSTALLED_APPS = [
     'users',
     'admin_panel',
     'parkings',
-
-
+    'django_celery_beat',
+    'django_celery_results',
 ]
 
 MIDDLEWARE = [
@@ -115,22 +116,26 @@ SESSION_CACHE_ALIAS = 'default'
 #     'version': 1,
 #     'disable_existing_loggers': False,
 #     'handlers': {
+#         'console': {
+#             'class': 'logging.StreamHandler',
+#         },
 #         'file': {
-#             'level': 'INFO',
 #             'class': 'logging.FileHandler',
-#             'filename': 'logs',
+#             'filename': 'celery.log',
 #         },
 #     },
+#     'root': {
+#         'handlers': ['console', 'file'],
+#         'level': 'DEBUG',
+#     },
 #     'loggers': {
-#         'django.request': {
-#             'handlers': ['file'],
-#             'level': 'INFO',
-#             'propagate': False,
+#         'admin_panel': {
+#             'handlers': ['console'],
+#             'level': 'DEBUG',
+#             'propagate': True,
 #         },
 #     },
 # }
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -183,9 +188,29 @@ CRONJOBS = [
 EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')
 EMAIL_HOST = os.getenv('EMAIL_HOST')
 EMAIL_PORT = os.getenv('EMAIL_PORT')
-EMAIL_STARTTLS = os.getenv('EMAIL_STARTTLS')
-EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL')
-EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+# EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+# DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 PASSWORD_RESET_CONFIRM_URL = 'password_reset_confirm'
+
+
+# Використовуємо Redis як брокера повідомлень
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+
+# Завдання зберігаються у Django ORM
+CELERY_RESULT_BACKEND = 'django-db'
+
+# Час очікування результатів
+CELERY_ACCEPT_CONTENT = ['json', 'pickle']
+CELERY_TASK_SERIALIZER = 'pickle'
+
+CELERY_BEAT_SCHEDULE = {
+    'check-parking-limit-every-morning': {
+        'task': 'admin_panel.tasks.check_parking_limits',
+        'schedule': crontab(hour='8', minute='0'),
+    },
+}
+
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
+CELERY_LOG_LEVEL = 'DEBUG'
+CELERY_CACHE_BACKEND = 'django-cache'

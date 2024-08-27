@@ -194,11 +194,12 @@ EMAIL_PORT = os.getenv('EMAIL_PORT')
 PASSWORD_RESET_CONFIRM_URL = 'password_reset_confirm'
 
 
-# Використовуємо Redis як брокера повідомлень
-CELERY_BROKER_URL = 'redis://localhost:6379/0'
+# CELERY_BROKER_URL = 'redis://localhost:6379/0'
+# CELERY_RESULT_BACKEND = 'django-db'
 
-# Завдання зберігаються у Django ORM
-CELERY_RESULT_BACKEND = 'django-db'
+CELERY_BROKER_URL = os.getenv('REDIS')
+CELERY_RESULT_BACKEND = os.getenv('REDIS')
+CELERY_BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}
 
 # Час очікування результатів
 CELERY_ACCEPT_CONTENT = ['json', 'pickle']
@@ -207,7 +208,7 @@ CELERY_TASK_SERIALIZER = 'pickle'
 CELERY_BEAT_SCHEDULE = {
     'check-parking-limit-every-morning': {
         'task': 'admin_panel.tasks.check_parking_limits',
-        'schedule': crontab(hour='8', minute='0'),
+        'schedule': crontab(hour='18', minute='42'),
     },
 }
 

@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Завантажити зображення</title>
-</head>
-<body>
-<h1>Завантажити зображення для обробки</h1>
+    <head>
+        <title>Load Image</title>
+    </head>
+    <body>
+        <h1>Load Image For Recognition</h1>
 
-<form method="POST" enctype="multipart/form-data">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Завантажити</button>
-</form>
-{% if text %}
-<h2>Number Plate</h2>
-<p>{{ text }}</p>
-{% endif %}
-</body>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Load</button>
+        </form>
+        {% if text %}
+            <h2>Plate Number</h2>
+            <p>{{ text }}</p>
+        {% endif %}
+        <p>{{ error }}</p>
+        <a href="/accounts/profile" class="btn btn-light me-2">Return to the Main Page</a>
+    </body>
 </html>

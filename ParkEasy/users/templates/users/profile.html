@@ -132,9 +132,10 @@
                     <button type="submit" class="btn btn-light me-2">Log Out</button>
                 </form>
                 <a href="/change_password" class="btn btn-light me-2">Change password</a>
-                <a href="/change_password" class="btn btn-light me-2">Редагування особистих данних </a>
-                <a href="/change_password" class="btn btn-light me-2">Звіт</a>
-                <a href="/change_password" class="btn btn-light me-2">Почати парковку</a>
+                <a href="{% url 'users:edit_user' %}" class="btn btn-light me-2">Edit Personal Data </a>
+                <a href="{% url 'users:parking_history' %}" class="btn btn-light me-2">Parking History</a>
+                <a href="/neunet/upload_image_start/" class="btn btn-light me-2">Start Parking</a>
+                <a href="/neunet/upload_image_finish/" class="btn btn-light me-2">Finish Parking</a>
             </div>
         </div>
     </div>

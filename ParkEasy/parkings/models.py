@@ -8,6 +8,7 @@ class UserProfile(models.Model):
     phone_number = models.CharField(max_length=15, blank=True, null=True)
     email = models.EmailField(blank=True, null=True)
     parking_limit = models.IntegerField(default=0)
+    last_limit_notification_sent = models.CharField(max_length=6, null=True, blank=True)
 
     def __str__(self):
         return f"Username: {self.user}, Phone: {self.phone_number}, Email: {self.email}"

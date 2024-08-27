@@ -207,7 +207,7 @@ CELERY_TASK_SERIALIZER = 'pickle'
 CELERY_BEAT_SCHEDULE = {
     'check-parking-limit-every-morning': {
         'task': 'admin_panel.tasks.check_parking_limits',
-        'schedule': crontab(hour='*', minute='0'),
+        'schedule': crontab(hour='8', minute='0'),
     },
 }
 

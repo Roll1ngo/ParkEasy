@@ -51,24 +51,21 @@ def get_plate_number_image(image_path: str):
                         print("Вирізане зображення порожнє.")
                 else:
                     print("Зображення є None, перевірте завантаження зображення.")
-                    return "12"
+                    return "Не вдалося виявити номерний знак на зображені"
 
         # If no license plate is detected
         print("Не вдалося виявити номерний знак на зображені")
-        return "12"
+        return "Не вдалося виявити номерний знак на зображені"
 
     except UnboundLocalError:
         print("Помилка: save_path не визначений.")
-        return "12"
+        return "Не вдалося виявити номерний знак на зображені"
 
     except Exception as e:
         print(f"Невідома помилка: {e}")
-        return "12"
-
-
+        return "Не вдалося виявити номерний знак на зображені"
 
 
 if __name__ == '__main__':
-
     source_image_path = 'neural_networks/test_images/car_image/1484814.jpg'
     path_number_plate_image = get_plate_number_image(source_image_path)

@@ -37,4 +37,3 @@ class History(models.Model):
     def __str__(self):
         plate_number = self.plate.plate_number if self.plate else 'Unknown'
         return f"Parking {self.id} for plate {plate_number}, Started at {self.parking_start}, Ended at {self.parking_end if self.parking_end else 'Ongoing'}, Completed: {'Yes' if self.is_completed else 'No'}, Duration: {self.duration} hour"
-

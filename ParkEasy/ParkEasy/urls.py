@@ -9,6 +9,7 @@ urlpatterns = [
     path("", include("users.urls")),
     path('admin_panel/', include('admin_panel.urls')),
     path('parkings/', include('parkings.urls')),
-    path('neunet/', include('neural_networks.urls'))
+    path('neunet/', include('neural_networks.urls')),
+    path('accounts/', include('users.urls')),
     ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

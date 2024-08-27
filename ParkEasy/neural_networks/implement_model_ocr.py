@@ -12,6 +12,8 @@ ocr = PaddleOCR(use_angle_cls=True, lang='en', show_log=False)
 
 # Validate Ukrainian plate format
 def validate_ukraine_plate(text):
+    if len(text) > 8 and sum(char.isdigit() for char in text) < 4:
+        return text
     text = en_uk_replace(text)
     if len(text) >= 8:
         text = text[-8:].upper()
@@ -33,15 +35,21 @@ def extract_license_plate_text(image_path):
     # OCR
     result = ocr.ocr(image)
     print("output ocr___", result)
-    if result != [None]:
+    if result and result != [None]:
+        plate_text = ""
         for line in result:
             for word_info in line:
+                # Extract the text information
                 text = word_info[1][0]
-                return validate_ukraine_plate(text)
+                if text != 'UA':
+                    plate_text += text
 
+        if plate_text:
+            return validate_ukraine_plate(plate_text)
+        else:
+            return "Не визначено знаходження номерного знаку"
     else:
-        "Не визначено знаходження номерного знаку"
-    return f'Не вдалося коректно прочитати номерний знак:  {result}'
+        return "Не визначено знаходження номерного знаку"
 
 
 def segment_characters(image):
@@ -135,9 +143,10 @@ def find_contours(dimensions, img):
 def get_number_in_text(source_image_path):
     plate_path = get_plate_number_image(source_image_path)
     plate = cv2.imread(plate_path)
+
     char = segment_characters(plate)
 
-    return extract_license_plate_text("neural_networks/test_images/ocr/output_img.jpg")
+    return extract_license_plate_text(plate_path)
 
 
 if __name__ == '__main__':

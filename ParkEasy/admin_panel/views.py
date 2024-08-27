@@ -89,7 +89,7 @@ def rate(request):
 
 @superuser_required(login_url='/login/')
 def parking_history(request):
-    parking_history = History.objects.select_related('plate').all()
+    parking_history = History.objects.select_related('plate__user').all()
     current_rate = Rates.objects.last().rate
 
     # Додаємо розрахунок вартості
@@ -97,8 +97,10 @@ def parking_history(request):
         if parking.parking_end:
             # duration = parking.parking_end - parking.parking_start
             # hours = ceil(duration.total_seconds() / 3600)
+            parking.rate = current_rate
             parking.cost = parking.duration * current_rate
         else:
+            parking.rate = None
             parking.cost = None
 
     # Пагінація
@@ -120,7 +122,7 @@ def generate_parking_report(request):
     now = timezone.now()
     thirty_days_ago = now - timezone.timedelta(days=30)
 
-    parking_history = History.objects.filter(parking_start__gte=thirty_days_ago).select_related('plate')
+    parking_history = History.objects.filter(parking_start__gte=thirty_days_ago).select_related('plate__user')
     current_rate = Rates.objects.last().rate
 
     # Формуємо дані для експорту в Excel
@@ -136,7 +138,9 @@ def generate_parking_report(request):
         else:
             parking.cost = None
         data.append({
-            'ID': parking.id,
+            'Parking ID': parking.id,
+            'User ID': parking.plate.user.id,
+            'User Name': parking.plate.user.name,
             'Plate Number': parking.plate.plate_number,
             'Parking Start': parking_start,
             'Parking End': parking_end,

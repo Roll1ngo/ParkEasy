@@ -5,12 +5,15 @@
     <table class="table table-bordered mt-4">
         <thead>
             <tr>
-                <th>ID</th>
+                <th>Parking ID</th>
+                <th>User ID</th>
+                <th>User Name</th>
                 <th>Plate Number</th>
                 <th>Parking Start</th>
                 <th>Parking End</th>
                 <th>Completed</th>
                 <th>Duration (hours)</th>
+                <th>Rate (UAH / hour)</th>
                 <th>Cost (UAH)</th>
             </tr>
         </thead>
@@ -18,11 +21,14 @@
             {% for parking in page_obj %}
                 <tr>
                     <td>{{ parking.id }}</td>
+                    <td>{{ parking.plate.user.id }}</td>
+                    <td>{{ parking.plate.user.name }}</td>
                     <td>{{ parking.plate }}</td>
                     <td>{{ parking.parking_start|date:"Y-m-d H:i:s" }}</td>
                     <td>{% if parking.parking_end %}{{ parking.parking_end|date:"Y-m-d H:i:s" }}{% endif %}</td>
                     <td>{% if parking.is_completed %}Yes{% else %}No{% endif %}</td>
-                    <td>{% if parking.is_completed %}{{ parking.duration }}{% else %}No{% endif %}</td>
+                    <td>{% if parking.is_completed %}{{ parking.duration }}{% else %}{% endif %}</td>
+                    <td>{% if parking.rate %}{{ parking.rate }}{% else %}{% endif %}</td>
                     <td>{% if parking.cost %}{{ parking.cost }}{% endif %}</td>
                 </tr>
             {% empty %}

@@ -18,4 +18,5 @@ urlpatterns = [
     path('reset/<uidb64>/<token>/', views.CustomPasswordResetConfirmView.as_view(success_url = reverse_lazy('users:password_reset_complete')), name='password_reset_confirm'),
     path('reset/done/', views.CustomPasswordResetCompleteView.as_view(), name='password_reset_complete'),
     path('users/edit/', views.edit_user, name='edit_user'),
+    path('parking_history', views.parking_history, name='parking_history'),
 ]

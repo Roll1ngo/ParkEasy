@@ -1,4 +1,4 @@
-import requests
+from django.shortcuts import get_object_or_404
 from django import forms
 from django.contrib.auth import authenticate, update_session_auth_hash
 from django.contrib import messages
@@ -11,8 +11,10 @@ from .forms import NewRegisterForm
 from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 from admin_panel.forms import UserProfileForm, PlateFormSet, PlatesFormUser, PlateFormSetUser
-from parkings.models import Plates, UserProfile, Rates
+from parkings.models import Plates, UserProfile, Rates, History
+
 
 
 def profile(request):
@@ -186,3 +188,35 @@ def edit_user(request):
         'profile_form': profile_form,
         'plates_formset': plates_formset
     })
+
+
+def parking_history(request):
+    # Перевірте, чи є поточний користувач автентифікованим
+    if not request.user.is_authenticated:
+        return redirect('login')  # Змініть на реальний маршрут для логіну
+
+    # Отримання профілю користувача
+    user_profile = get_object_or_404(UserProfile, user=request.user)
+
+    # Отримання історії паркування для поточного користувача
+    parking_history = History.objects.filter(
+        plate__user=user_profile
+    ).select_related('plate__user').all()
+
+    current_rate = Rates.objects.last().rate
+
+    # Додаємо розрахунок вартості
+    for parking in parking_history:
+        if parking.parking_end:
+            parking.rate = current_rate
+            parking.cost = parking.duration * current_rate
+        else:
+            parking.rate = None
+            parking.cost = None
+
+    # Пагінація
+    paginator = Paginator(parking_history, 50)  # 50 записів на сторінку
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'users/parking_history.html', {'page_obj': page_obj})

@@ -49,7 +49,7 @@ def check_parking_limits():
                             f'''
 Dear Customer,
 
-For the current month, the total cost of parking at ParkEasy network parking lots has exceeded your set monthly limit ({total_amount_spent} UAH out of {profile.parking_limit} UAH limit per month). We highly recommend reviewing your parking history and limits set.
+For the current month, the total cost of parking at ParkEasy network parking lots has exceeded your set monthly limit ({total_amount_spent} UAH out of {profile.parking_limit} UAH limit per month  so far). We highly recommend reviewing your parking history and limits set.
 
 Best regards,
 Your ParkEasy Team''',

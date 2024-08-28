@@ -1,0 +1,52 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: ${PARKEASY_DATABASE_NAME}
+      POSTGRES_USER: ${PARKEASY_DATABASE_USER}
+      POSTGRES_PASSWORD: ${PARKEASY_DATABASE_PASSWORD}
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:latest
+    environment:
+      REDIS_PASSWORD: ${PARKEASY_REDIS_PASS}
+
+  web:
+    build: .
+    command: gunicorn ParkEasy.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - .:/ParkEasy
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+    env_file:
+      - .env
+
+  celery_beat:
+    build: .
+    command: celery -A ParkEasy beat -S django -l info
+    volumes:
+      - .:/ParkEasy
+    depends_on:
+      - redis
+    env_file:
+      - .env
+
+  celery_worker:
+    build: .
+    command: celery -A ParkEasy worker --loglevel=INFO --concurrency=1 --pool=solo -E --without-gossip --without-mingle --without-heartbeat
+    volumes:
+      - .:/ParkEasy
+    depends_on:
+      - redis
+    env_file:
+      - .env
+
+volumes:
+  db_data:

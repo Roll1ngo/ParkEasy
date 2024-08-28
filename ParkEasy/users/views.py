@@ -14,6 +14,9 @@ from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from admin_panel.forms import UserProfileForm, PlateFormSet, PlatesFormUser, PlateFormSetUser
 from parkings.models import Plates, UserProfile, Rates, History
+import pandas as pd
+from io import BytesIO
+from django.http import HttpResponse
 
 
 
@@ -220,3 +223,47 @@ def parking_history(request):
     page_obj = paginator.get_page(page_number)
 
     return render(request, 'users/parking_history.html', {'page_obj': page_obj})
+
+
+def generate_user_parking_report(request):
+    user_profile = get_object_or_404(UserProfile, user=request.user)
+
+    parking_history = History.objects.filter(plate__user=user_profile).select_related('plate__user').all()
+
+    current_rate = Rates.objects.last().rate
+
+    data = []
+    for parking in parking_history:
+        parking_start = parking.parking_start.replace(tzinfo=None)
+        parking_end = parking.parking_end.replace(tzinfo=None) if parking.parking_end else None
+        parking_completed = 'Yes' if parking.is_completed else 'No'
+
+        if parking.parking_end:
+            parking.cost = parking.duration * current_rate
+        else:
+            parking.cost = None
+
+        data.append({
+            'Parking ID': parking.id,
+            'User ID': parking.plate.user.id,
+            'User Name': parking.plate.user.name,
+            'Plate Number': parking.plate.plate_number,
+            'Parking Start': parking_start,
+            'Parking End': parking_end,
+            'Completed': parking_completed,
+            'Duration (hours)': parking.duration,
+            'Cost (UAH)': parking.cost
+        })
+
+    df = pd.DataFrame(data)
+
+    output = BytesIO()
+    with pd.ExcelWriter(output, engine='openpyxl') as writer:
+        df.to_excel(writer, index=False, sheet_name='Parking History')
+
+    output.seek(0)
+
+    response = HttpResponse(output, content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    response['Content-Disposition'] = f'attachment; filename=user_{user_profile.user.id}_parking_report.xlsx'
+
+    return response

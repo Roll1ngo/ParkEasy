@@ -121,7 +121,7 @@
 <body>
     <div class="login">
         <h1>Load Image For Recognition</h1>
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group">
                 {{ form.as_p }}

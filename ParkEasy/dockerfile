@@ -1,0 +1,20 @@
+FROM python:3.10
+
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+WORKDIR /ParkEasy
+
+RUN apt-get update \
+    && apt-get install -y \
+       libgl1-mesa-glx \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt /ParkEasy/
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . /ParkEasy/
+
+RUN python manage.py migrate
+
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "ParkEasy.wsgi:application"]

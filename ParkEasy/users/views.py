@@ -89,7 +89,7 @@ class RegisterView(View):
 
 
 class LoginForm(AuthenticationForm):
-    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Username'}))
+    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Login'}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Password'}))
 
     error_messages = {
@@ -220,3 +220,4 @@ def parking_history(request):
     page_obj = paginator.get_page(page_number)
 
     return render(request, 'users/parking_history.html', {'page_obj': page_obj})
+

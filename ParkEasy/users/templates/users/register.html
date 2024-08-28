@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
+    <link rel="icon" type="image/x-icon" href="/media/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <style>
         * {
@@ -37,11 +38,35 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            margin: -250px 0 0 -150px;
-            width: 300px; /* Adjust width */
-            background: rgba(0,0,0,0.5); /* Background for better readability */
-            padding: 20px; /* Padding for spacing */
-            border-radius: 8px; /* Rounded corners */
+            transform: translate(-50%, -50%);
+            width: 300px;
+            max-height: 80%;
+            background: rgba(0,0,0,0.5);
+            padding: 20px;
+            border-radius: 8px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.5) rgba(0,0,0,0.3);
+        }
+
+        .login::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .login::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.3);
+            border-radius: 4px;
+        }
+
+        .login::-webkit-scrollbar-thumb {
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 4px;
+            border: 1px solid transparent;
+            background-clip: content-box;
+        }
+
+        .login::-webkit-scrollbar-thumb:hover {
+            background-color: rgba(255, 255, 255, 0.7);
         }
         .login h1 {
             color: #fff;
@@ -138,15 +163,15 @@
                 {% endif %}
             </div>
             <div class="form-group">
-                <input type="text" name="username" placeholder="Username" value="{{ form.username.value|default_if_none:'' }}">
-                {% if form.username.errors %}
-                    <div class="error">{{ form.username.errors }}</div>
-                {% endif %}
-            </div>
-            <div class="form-group">
                 <input type="email" name="email" placeholder="Email" value="{{ form.email.value|default_if_none:'' }}">
                 {% if form.email.errors %}
                     <div class="error">{{ form.email.errors }}</div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <input type="text" name="username" placeholder="Login" value="{{ form.username.value|default_if_none:'' }}">
+                {% if form.username.errors %}
+                    <div class="error">{{ form.username.errors }}</div>
                 {% endif %}
             </div>
             <div class="form-group">

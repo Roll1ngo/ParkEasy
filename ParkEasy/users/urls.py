@@ -19,4 +19,5 @@ urlpatterns = [
     path('reset/done/', views.CustomPasswordResetCompleteView.as_view(), name='password_reset_complete'),
     path('users/edit/', views.edit_user, name='edit_user'),
     path('parking_history', views.parking_history, name='parking_history'),
+    path('parking_history/generate_report/', views.generate_user_parking_report, name='generate_user_parking_report'),
 ]

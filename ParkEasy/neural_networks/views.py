@@ -15,19 +15,19 @@ def upload_car_image_and_start(request):
             path_to_number_plate = get_number_in_text(image_path)
 
             if path_to_number_plate == 'Не визначено знаходження номерного знаку':
-                return render(request, 'neural_networks/upload_image.html', {'form': form, 'error': 'Car plate hasn\'t been recognized'})
+                return render(request, 'neural_networks/upload_image.html', {'form': form, 'text': 'Car plate hasn\'t been recognized'})
 
             try:
                 plate = Plates.objects.get(plate_number=path_to_number_plate)
             except Plates.DoesNotExist:
-                return render(request, 'neural_networks/upload_image.html', {'form': form, 'error': f'Car plate {path_to_number_plate} hasn\'t found in database'})
+                return render(request, 'neural_networks/upload_image.html', {'form': form, 'text': f'Car plate {path_to_number_plate} hasn\'t found in database'})
 
             if plate.is_banned:
                 return render(request, 'neural_networks/upload_image.html',
                               {'form': form, 'error': f'Car plate {path_to_number_plate} is banned'})
 
             if plate.user != UserProfile.objects.get(user=request.user):
-                return render(request, 'neural_networks/upload_image.html', {'form': form, 'error': f'Car plate {path_to_number_plate} doesn\'t belong to you'})
+                return render(request, 'neural_networks/upload_image.html', {'form': form, 'text': f'Car plate {path_to_number_plate} doesn\'t belong to you'})
 
             # Додавання нового запису до таблиці History
             History.objects.create(
@@ -54,23 +54,23 @@ def upload_car_image_and_finish(request):
 
             # Якщо номерний знак не розпізнаний
             if path_to_number_plate == 'Не визначено знаходження номерного знаку':
-                return render(request, 'neural_networks/upload_image.html', {'form': form, 'error': 'Car plate hasn\'t been recognized'})
+                return render(request, 'neural_networks/upload_image.html', {'form': form, 'text': 'Car plate hasn\'t been recognized'})
 
             # Перевірка наявності номерного знаку в БД
             try:
                 plate = Plates.objects.get(plate_number=path_to_number_plate)
             except Plates.DoesNotExist:
-                return render(request, 'neural_networks/upload_image.html', {'form': form, 'error': f'Car plate {path_to_number_plate} hasn\'t found in database'})
+                return render(request, 'neural_networks/upload_image.html', {'form': form, 'text': f'Car plate {path_to_number_plate} hasn\'t found in database'})
 
             # Перевірка власника номерного знаку
             if plate.user != UserProfile.objects.get(user=request.user):
-                return render(request, 'neural_networks/upload_image.html', {'form': form, 'error': f'Car plate {path_to_number_plate} doesn\'t belong to you'})
+                return render(request, 'neural_networks/upload_image.html', {'form': form, 'text': f'Car plate {path_to_number_plate} doesn\'t belong to you'})
 
             # Перевірка наявності активного паркування
             try:
                 parking_history = History.objects.get(plate=plate, is_completed=False)
             except History.DoesNotExist:
-                return render(request, 'neural_networks/upload_image.html', {'form': form, 'error': f'No ongoing parking session found for car plate {path_to_number_plate}'})
+                return render(request, 'neural_networks/upload_image.html', {'form': form, 'text': f'No ongoing parking session found for car plate {path_to_number_plate}'})
 
             # Завершення паркування
             parking_end_time = timezone.now()

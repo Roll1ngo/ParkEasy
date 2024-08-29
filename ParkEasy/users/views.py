@@ -20,32 +20,25 @@ from openpyxl import load_workbook
 from django.http import HttpResponse
 
 
-
 def profile(request):
-    current_rate = Rates.objects.last()
-    return render(request, 'users/profile.html', {'current_rate': current_rate.rate})
 
+    user_profile = get_object_or_404(UserProfile, user=request.user)
 
-# class RegisterView(View):
-#     template_name = 'users/register.html'
-#     form_class = RegisterForm
-#
-#     def dispatch(self, request, *args, **kwargs):
-#         if request.user.is_authenticated:
-#             return redirect(to='/')
-#         return super().dispatch(request, *args, **kwargs)
-#
-#     def get(self, request):
-#         return render(request, self.template_name, context={'form': self.form_class})
-#
-#     def post(self, request):
-#         form = self.form_class(request.POST, request.FILES)
-#         if form.is_valid():
-#             form.save()
-#             username = form.cleaned_data['username']
-#             messages.success(request, f'Greetings {username}, your account has been successfully registered')
-#             return redirect(to='users:login')
-#         return render(request, self.template_name, context={'form': form})
+    parking_history = History.objects.filter(
+        plate__user=user_profile
+    ).select_related('plate__user').all()
+
+    current_rate = Rates.objects.last().rate
+
+    for parking in parking_history:
+        if parking.parking_end:
+            parking.rate = current_rate
+            parking.cost = parking.duration * current_rate
+        else:
+            parking.rate = None
+            parking.cost = None
+
+    return render(request, 'users/profile.html', {'current_rate': current_rate, 'parking_history': parking_history})
 
 
 class RegisterView(View):
@@ -226,7 +219,6 @@ def parking_history(request):
     return render(request, 'users/parking_history.html', {'page_obj': page_obj})
 
 
-
 def generate_user_parking_report(request):
     user_id = request.user.id
     user = get_object_or_404(UserProfile, user_id=user_id)
@@ -268,6 +260,7 @@ def generate_user_parking_report(request):
     response['Content-Disposition'] = f'attachment; filename=user_{user_id}_parking_report.xlsx'
 
     return response
+
 
 def autosize_columns(file_in_memory):
     wb = load_workbook(file_in_memory)

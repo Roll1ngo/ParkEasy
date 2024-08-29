@@ -166,7 +166,11 @@
             <h1><a href="/" class="text-decoration-none text-white">Park Easy</a></h1>
             <div class="buttons right">
                 <form id="logout-form" action="/logout/" method="post">
-                    {% csrf_token %}
+                    {% csrf_token %}\
+                    {% if user.is_superuser %}
+                        <a href="/admin_panel/" class="btn btn-warning me-2">Admin Panel</a>
+                    {% endif %}
+                    <a href="/change_password" class="btn btn-secondary change-password-btn">Change Password</a>
                     <button type="submit" class="btn btn-secondary">Log Out</button>
                 </form>
             </div>
@@ -176,8 +180,8 @@
             <h1 class="text-white">Welcome {{ request.user.username }}</h1>
             <h3 class="text-white">Current Rate: {{ current_rate }} UAH / hour</h3> 
             <div class="d-flex justify-content-center align-items-center flex-column">
-                <a href="/neunet/upload_image_start/" class="btn-parking start-parking">Start Parking</a> 
-                <a href="/neunet/upload_image_finish/" class="btn-parking finish-parking">Finish Parking</a>
+                <a href="/neunet/upload_image_start/" class="btn-parking start-parking mt-3">Start Parking</a>
+                <a href="/neunet/upload_image_finish/" class="btn-parking finish-parking mt-4">Finish Parking</a>
             </div>
         </div>
         <div class="container mt-4">
@@ -195,7 +199,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for parking in page_obj %}
+                    {% for parking in parking_history %}
                     <tr>
                         <td>{{ parking.plate.user.name }}</td>
                         <td>{{ parking.plate }}</td>

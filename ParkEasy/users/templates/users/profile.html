@@ -24,7 +24,8 @@
             font-family: 'Open Sans', sans-serif;
             background: linear-gradient(to bottom, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%),
                 linear-gradient(135deg, #670d10 0%, #092756 100%);
-            overflow: hidden;
+            overflow: auto;
+            background-attachment: fixed;
         }
 
         .container-fluid {
@@ -39,6 +40,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
 
         .header h1 {
@@ -46,6 +48,21 @@
             margin: 0;
             text-align: center;
             flex: 1;
+        }
+
+        .header .title-container {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .header h1 a {
+            color: #fff;
+            text-decoration: none;
         }
 
         .header .buttons {
@@ -96,7 +113,6 @@
             color: #fff;
         }
 
-        /* Анімація зірок */
         .stars {
             position: absolute;
             width: 100%;
@@ -106,7 +122,6 @@
             opacity: 0.2;
         }
 
-        /* Стан паркування */
         .btn-parking {
             display: inline-block;
             padding: 10px 15px;
@@ -164,10 +179,12 @@
             <div class="buttons left">
                 <a href="{% url 'users:edit_user' %}" class="btn btn-secondary">Edit Personal Data</a>
             </div>
-            <h1><a href="/" class="text-decoration-none text-white">Park Easy</a></h1>
+            <div class="title-container">
+                <h1><a href="/">Park Easy</a></h1>
+            </div>
             <div class="buttons right">
                 <form id="logout-form" action="/logout/" method="post">
-                    {% csrf_token %}\
+                    {% csrf_token %}
                     {% if user.is_superuser %}
                         <a href="/admin_panel/" class="btn btn-warning me-2">Admin Panel</a>
                     {% endif %}
@@ -178,17 +195,17 @@
         </div>
 
         <div class="d-flex justify-content-center align-items-center flex-column">
-            <h1 class="text-white">Welcome {{ request.user.username }}</h1>
-            <h3 class="text-white">Current Rate: {{ current_rate }} UAH / hour</h3> 
+            <h2 class="text-white"> Helo {{ request.user.username }}, your current rate: {{ current_rate }} UAH / hour</h2> 
             <div class="d-flex justify-content-center align-items-center flex-column">
                 <a href="/neunet/upload_image_start/" class="btn-parking start-parking mt-3">Start Parking</a>
                 <a href="/neunet/upload_image_finish/" class="btn-parking finish-parking mt-4">Finish Parking</a>
                 <a href="{% url 'users:generate_user_parking_report' %}" class="btn btn-success mt-4" style="font-size: 1rem; padding: 10px 20px;">
-                    <i class="bi bi-file-earmark-excel"></i>Download Report
+                    <i class="bi bi-file-earmark-excel"></i>Download Report 
                 </a>
             </div>
         </div>
         <div class="container">
+            <h2 class="text-center text-white">Parking History</h2>
             <table class="table table-bordered">
                 <thead>
                     <tr>
